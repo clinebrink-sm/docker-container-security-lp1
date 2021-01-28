@@ -1,7 +1,9 @@
 default: deploy
 
 static: Dockerfile
-	docker run --rm -i hadolint/hadolint hadolint --ignore DL3018 - < Dockerfile
+	@docker run --rm -i hadolint/hadolint hadolint --ignore DL3018 - < Dockerfile
+	@echo "Running dockerfile_lint"
+	@docker run -it --rm -v ${PWD}:/root/ projectatomic/dockerfile-lint dockerfile_lint -r policies/new_rules.yml
 
 build: static
 	@echo "Building Hugo Builder container..."
@@ -9,7 +11,10 @@ build: static
 	@echo "Hugo Builder container built!"
 	@docker images lp/hugo-builder
 
-start: build
+vulnscan:
+	clair-scanner --ip 10.0.2.15 lp/hugo-builder
+
+start: build vulnscan
 	@echo "Starting Docker Instance"
 	docker run -d --rm -i -p 1313:1313 --name hb lp/hugo-builder
 
