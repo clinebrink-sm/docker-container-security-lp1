@@ -2,6 +2,14 @@
 FROM alpine:3.13.0
 #FROM alpine:3.8
 
+LABEL org.opencontainers.image.created="1/1/1901"
+LABEL org.opencontainers.image.revision="99275.1"
+LABEL org.opencontainers.image.version="2002002020"
+LABEL org.opencontainers.image.licenses="GPLv3"
+LABEL org.opencontainers.image.URL="http://localhost"
+LABEL org.opencontainers.image.name="hugo container"
+
+
 #MAINTAINER PS <psellars@gmail.com>
 LABEL MAINTAINER="somebody"
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]

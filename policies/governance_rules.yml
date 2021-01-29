@@ -1,0 +1,46 @@
+---
+  profile:
+    name: "Governance Rules"
+
+  line_rules:
+
+    LABEL:
+      defined_namevals:
+        org.opencontainers.image.created:
+          level: "warn"
+          message: "Label 'org.opencontainers.image.created' is invalid."
+          required: true
+          valueRegex: /.+/
+
+        org.opencontainers.image.revision:
+          level: "warn"
+          message: "Label 'org.opencontainers.image.revision' is invalid."
+          required: true                                
+          valueRegex: /.+/
+
+        org.opencontainers.image.version:
+          level: "warn"
+          message: "Label 'org.opencontainers.image.version' is invalid."
+          required: true
+          valueRegex: /.+/
+
+        org.opencontainers.image.licenses:
+          level: "warn"
+          message: "Label 'org.opencontainers.image.licenses' is invalid."
+          required: true
+          valueRegex: /.+/
+
+        org.opencontainers.image.url:
+          level: "warn"
+          message: "Label 'org.opencontainers.image.url' is invalid."
+          required: true
+          valueRegex: /.+/
+
+        org.opencontainers.image.name:
+          level: "warn"
+          message: "Label 'org.opencontainers.image.name' is invalid."
+          required: true
+          valueRegex: /.+/				
+
+
+

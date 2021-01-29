@@ -5,6 +5,7 @@ profile:
 
   includes:
       - security_rules.yml
+      - governance_rules.yml
 
 line_rules:
 

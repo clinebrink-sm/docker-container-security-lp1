@@ -29,3 +29,20 @@ deploy: start
 
 stop:
 	docker stop hb
+
+bom:
+	@echo Software BoM check running
+	#docker run --privileged --device /dev/fuse -v /var/run/docker.sock:/var/run/docker.sock --rm ternd -d Dockerfile -f spdxtagvalue report > spdx.txt
+	python3 -m tern report -d Dockerfile -f spdxtagvalue -o spdx.txt
+	@echo Software BoM in $(PWD)/spdx.txt
+
+#report -d Dockerfile -f spdxtagvalue 
+
+#check_health:
+#	@echo "Checking the health of the Hugo Server..."
+#	@docker inspect --format='{{json .State.Health}}' hugo_server
+inspect_labels:
+	@echo "Inspecting Hugo Server Container labels..."
+	@echo "maintainer set to..."
+	@docker inspect --format '{{ index .Config.Labels "maintainer" }}' hugo_server
+	@echo "Labels inspected!"
